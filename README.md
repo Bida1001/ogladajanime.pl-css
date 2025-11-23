@@ -11,7 +11,7 @@
 ###
 
 <div align="center">
-  <a href="https://ogladajanime.pl/" target="_blank">
+  <a href="https://ogladajanime.pl/" target="blank">
   <img height="45" src="https://cdn.ogladajanime.pl/images/oaIcon.png"  alt="ogladajanime small logo"/>
   <img height="45" src="https://cdn.ogladajanime.pl/images/oa3.png" alt="ogladajanime full logo" />
   </a>
