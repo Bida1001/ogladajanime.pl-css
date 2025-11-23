@@ -40,7 +40,7 @@
 
 <p align="left">
   You need to use a CSS injection plugin such as Stylus. Once you have done this, simply create a new script file in it and paste the code.<br><br>
-  You may need to use :
+  <h4>You may need to use :</h4>
 </p>
 <pre>@-moz-document domain("ogladajanime.pl") {}</pre>
 <p>and only then paste the code into it.</p>
