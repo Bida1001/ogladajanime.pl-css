@@ -1,7 +1,3 @@
-@-moz-document domain("ogladajanime.pl") {
-
-
-
 :root {
     --color: rgb(var(--raw-color));
     --raw-color: 40, 105, 255; /*85, 105, 255*/
@@ -1010,5 +1006,4 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
 /* komentarze */
 .col-12.col-xl-9.order-4.order-xl-4.px-2.mt-2{
     display: none !important;
-}
 }
