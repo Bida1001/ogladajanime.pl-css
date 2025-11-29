@@ -44,7 +44,7 @@
 </p>
 <pre>@-moz-document domain("ogladajanime.pl") {}</pre>
 <p>and only then paste the code into it.</p>
-
+<p>of course you can in CSS file just use:<pre>@import</pre>and there is no need to copy CSS file</p>
 
 <div>
   <img style="width: 100%;" src="https://capsule-render.vercel.app/api?type=waving&height=100&section=footer&reversal=false&fontSize=70&fontColor=FFFFFF&fontAlign=50&fontAlignY=50&stroke=-&descSize=20&descAlign=50&descAlignY=50&theme=cobalt" />
