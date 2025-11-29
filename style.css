@@ -1,9 +1,13 @@
+
+
+
 :root {
     --color: rgb(var(--raw-color));
-    --raw-color: 40, 105, 255; /*85, 105, 255*/
+    --raw-color: 85, 135, 255; /*85, 135, 255*/
 /*     --font-color: color-contrast(var(--color) vs white, black); */
     --bg-c: rgb(var(--raw-bg-c));
     --raw-bg-c: 26, 26, 26;
+    --brightness-eff:1.2;
     --ratio : 5/7;
     --shadow-efect : 0 0 .3rem;
     --shadow-efect-hover :.5rem;
@@ -82,7 +86,7 @@ nav:has(#navBarSearchForm){
     margin: 0 !important;
     padding: 0 !important;
     position: fixed;
-    z-index: 100;
+    z-index: 1001;
     left: 0;
     top: 0;
     right: 0;
@@ -138,7 +142,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     display: flex;
 }
 nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent:has(ul#dropdown) > ul > li:nth-child(n + 2)>a:hover{
-    filter: brightness(1.4);
+    filter: brightness(var(--brightness-eff));
 }
 nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent:has(ul#dropdown) > ul > li:nth-child(n + 2)>a{
     border: 1px solid #666;
@@ -190,7 +194,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     }
     nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent > ul:has(ul#dropdown) > li.dropdown.show > ul#dropdown >li:hover{
             background-color: #fff1;
-            filter: brightness(1.4);
+            filter: brightness(var(--brightness-eff));
         }
     nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent > ul:has(ul#dropdown) > li.dropdown.show > ul#dropdown >li>*{
         color: #666 !important;
@@ -227,7 +231,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
         font-weight: 500;
     }
     nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent >ul.navbar-nav.ml-auto.mr-0>li.dropdown>button:hover{
-        filter: brightness(1.4);
+        filter: brightness(var(--brightness-eff));
 }
     nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent >ul.navbar-nav.ml-auto.mr-0>li.dropdown.show>button{
         border-color: var(--color);
@@ -257,7 +261,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
         padding: .2rem !important;
     }
     nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent >ul.navbar-nav.ml-auto.mr-0>li.dropdown.show >div>a:hover{
-        filter: brightness(1.4);
+        filter: brightness(var(--brightness-eff));
         background-color: #fff1;
         color: var(--color) !important;
     }
@@ -315,7 +319,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     }
     nav>#navBarSearchForm>#searchInputautocomplete-list>div:hover{
         background-color: #fff1;
-        filter: brightness(1.4);
+        filter: brightness(var(--brightness-eff));
     }
 
 /*  */
@@ -537,7 +541,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     transition: 0.3s !important;
 }
 .col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) > div > div > div > div > :last-child:hover {
-    filter: brightness(1.4) !important;
+    filter: brightness(var(--brightness-eff)) !important;
 }
 .col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) > div::scroll-button(right),
 .col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) > div::scroll-button(left) {
@@ -714,7 +718,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     flex-grow: 1 !important;
 }
 .col-12.col-xl-3.order-2.order-xl-1.px-4 #ep_list li > div>div:hover{
-    filter: brightness(1.4) !important;
+    filter: brightness(var(--brightness-eff)) !important;
 }
     /* numer */
 .col-12.col-xl-3.order-2.order-xl-1.px-4 #ep_list li > div>div>span{
@@ -771,9 +775,105 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     border-radius: .8rem;
     overflow: hidden;
     transform: scale(.987) translateY(-.2rem);
+    &>a#playerStartImg{
+        &>img{
+            height: 100%;
+            width: 100%;
+            position: relative;
+            
+        }
+        &:before{
+            --font-size:12rem;
+            font-family: VideoJS;
+            content: "\f102";
+            font-size: var(--font-size);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background-color: #464647;
+            transition: .3s;
+            color: var(--color);
+            text-align: center;
+            align-content: center;
+        }
+    }
+
 }
 .col-12.col-xl-9.order-1.order-xl-2.px-2.mb-2:has(#playerLoader)>.row>.col-12>.row>.col-12:has(#playerLoader)>#playerEmbed{
     position: relative !important;
+    &>#newPlayer{
+        &>button.vjs-big-play-button[title="Odtwórz wideo"]{
+            background-color: rgba(var(--raw-color),.25);
+            font-size: 2.5rem;
+            transition: .3s;
+            border: 1px solid var(--color);
+            color: var(--color);
+            height: auto !important;
+            width: auto !important;
+            padding:0 1.5rem;
+            box-shadow: 0 0 1.5rem inset;  
+            &:hover{
+                cursor: pointer;
+                filter: brightness(var(--brightness-eff));
+                background-color: rgba(var(--raw-color),.5);
+                color: white;
+            }
+            &>span.vjs-icon-placeholder:before{
+                display: none !important;
+            }
+            &>span.vjs-icon-placeholder:after{
+                font-family: VideoJS;
+                content: "\f101";
+                align-content: center;
+            }
+            &>span.vjs-icon-placeholder{
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+        }
+        &>div.vjs-control-bar[dir="ltr"]{
+            background: linear-gradient(transparent, var(--bg-c));
+            &>div.vjs-progress-control.vjs-control{
+                &>div{
+                    border-radius: 20rem;
+                    height: .2rem;
+                }
+                &:hover>div>div.vjs-play-progress.vjs-slider-bar{
+                        &>div.vjs-time-tooltip{
+                            display: block;
+                        }
+                    }
+                &>div>div.vjs-play-progress.vjs-slider-bar{
+                    position: relative;
+                    background: var(--color); 
+                    border-radius: 20rem;
+                    font-size: 1rem;
+                    &:before{
+                        border-radius: 5rem;
+                        color: var(--color);
+                        transform: translateY(-1%) translatex(-0%);
+                    }
+                    &>div.vjs-time-tooltip{
+                        all: unset;
+                        display: none;
+                        font-family: sans-serif;
+                        position: absolute;
+                        bottom: 1rem;
+                        background-color: rgba(var(--raw-bg-c),.5);
+                        padding: .3rem .5rem;
+                        border: 1px solid var(--bg-c);
+                        border-radius: .5rem;
+                        font-size: .7rem;
+                    }
+                    
+                }
+            }
+        }
+    }
 }
 .col-12.col-xl-9.order-1.order-xl-2.px-2.mb-2:has(#playerLoader)>.row>.col-12>.row>.col-12:has(#playerLoader)>#playerEmbed a{
     all: unset !important;
@@ -782,8 +882,8 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     bottom: 4rem !important;
     border: var(--color) 1px solid !important;
     font-size: large !important;
-    padding: .8rem 1rem!important;
-    border-radius: .5rem !important;
+    padding: .8rem 2rem!important;
+    border-radius: 25rem !important;
     background-color: rgba(var(--raw-bg-c),.5) !important;
     transition: .3s !important;
     &[style*="display: none;"]{
@@ -814,6 +914,10 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     background-color: #6662;
     color: #666;
     font-weight: bold;
+    &:hover{
+        filter: brightness(var(--brightness-eff));
+        cursor: pointer;
+    }
 }
 .col-12.mt-2.text-center:has(#next_ep_button)>div.btn-group{
     display: flex !important;
