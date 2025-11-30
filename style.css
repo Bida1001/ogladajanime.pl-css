@@ -3,8 +3,7 @@
 
 :root {
     --color: rgb(var(--raw-color));
-    --raw-color: 85, 135, 255; /*85, 135, 255*/
-/*     --font-color: color-contrast(var(--color) vs white, black); */
+    --raw-color: 35, 135, 255; /*35, 135, 255*/
     --bg-c: rgb(var(--raw-bg-c));
     --raw-bg-c: 26, 26, 26;
     --brightness-eff:1.2;
@@ -836,26 +835,55 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
 
         }
         &>div.vjs-control-bar[dir="ltr"]{
-            background: linear-gradient(transparent, var(--bg-c));
+            --gradient-point: rgba(var(--raw-bg-c),.5);
+            --optionsHeight: 2.5rem;
+            background: linear-gradient(var(--gradient-point), var(--bg-c));
+            transition:.3s ;
+            box-sizing: border-box;
+            padding: 0 1rem;
+            height: unset;  
+            padding-bottom: .5rem;
+            gap:.5rem;
+            &>*{
+                background-color: var(--bg-c);
+                border-radius: 45rem;
+                min-width: var(--optionsHeight);
+                min-height: 2rem;
+            }
+            &>:nth-last-child(4){
+                margin-left: auto;
+            }
             &>div.vjs-progress-control.vjs-control{
+                position: absolute;
+                background: linear-gradient(transparent,var(--gradient-point));
+                bottom: var(--optionsHeight);
+                left: 0;
+                border-radius: 0;
+                width: 100% ;
+                & *{border-radius: 45rem !important;}
                 &>div{
-                    border-radius: 20rem;
-                    height: .2rem;
-                }
-                &:hover>div>div.vjs-play-progress.vjs-slider-bar{
-                        &>div.vjs-time-tooltip{
-                            display: block;
-                        }
-                    }
-                &>div>div.vjs-play-progress.vjs-slider-bar{
+                    --barHeight: .4rem;
+                    border-radius: 45rem !important;
+                    height: var(--barHeight);
+                    margin: 0 1rem!important;
+                    padding: 0 !important;
+                    &>div.vjs-play-progress.vjs-slider-bar{
                     position: relative;
                     background: var(--color); 
-                    border-radius: 20rem;
+                    border-radius: 45rem !important;
                     font-size: 1rem;
                     &:before{
-                        border-radius: 5rem;
+                        all: unset;
+                        font-family: VideoJS;
+                        font-size: calc(var(--barHeight) * 2);
+                        content: "\f111";
                         color: var(--color);
-                        transform: translateY(-1%) translatex(-0%);
+                        transform: translateY(-50%) translatex(-50%);
+                        position: absolute;
+                        left: 100%;
+                        top: 50%;
+                        z-index: 1;
+                        
                     }
                     &>div.vjs-time-tooltip{
                         all: unset;
@@ -866,10 +894,44 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
                         background-color: rgba(var(--raw-bg-c),.5);
                         padding: .3rem .5rem;
                         border: 1px solid var(--bg-c);
-                        border-radius: .5rem;
+                        border-radius: 45rem !important;
                         font-size: .7rem;
                     }
                     
+                }
+                }
+                &:hover>div>div.vjs-play-progress.vjs-slider-bar{
+                        &>div.vjs-time-tooltip{
+                            display: block;
+                        }
+                    }
+            }
+            &>div.vjs-menu-button.vjs-menu-button-popup.vjs-control.vjs-button{
+                align-content: center;
+                width: unset;
+                &>span{
+                    display: none;
+                }
+                &>button{
+                    font-size: .7rem;
+                    width: unset;
+                }
+                &>div{
+                    &>ul.vjs-menu-content{
+                        border: 1px solid var(--bg-c);
+                        background-color:rgba( var(--raw-bg-c), .5);
+                        border-radius: .5rem;
+                        backdrop-filter: blur(var(--blur-Bc));
+                        &>li:hover{
+                            background-color: #fff8 ;
+                            filter: brightness(var(--brightness-eff))
+                        }
+                        &>li.vjs-selected{
+                            background-color: var(--color);
+                            font-weight: bold;
+                            color: var(--bg-c);
+                        }
+                    }
                 }
             }
         }
@@ -879,12 +941,13 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     all: unset !important;
     position: absolute !important;
     right: 2rem !important;
-    bottom: 4rem !important;
+    bottom: 5rem !important;
     border: var(--color) 1px solid !important;
     font-size: large !important;
     padding: .8rem 2rem!important;
     border-radius: 25rem !important;
     background-color: rgba(var(--raw-bg-c),.5) !important;
+    backdrop-filter: blur(var(--blur-Bc)) !important; 
     transition: .3s !important;
     &[style*="display: none;"]{
         display: none !important;
