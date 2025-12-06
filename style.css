@@ -114,7 +114,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     position: relative !important;
     background-color: transparent;
     &:hover{
-        filter: grayscale();  
+        filter: grayscale(70%);  
     }
 }
 nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent:has(ul#dropdown) > ul > li:first-child>a>img{
@@ -184,11 +184,11 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
         padding: .2rem !important;
     }
     nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent > ul:has(ul#dropdown) > li.dropdown.show > ul#dropdown >li:first-child{
-        border-radius: calc(var(--round-eff)/2) calc(var(--round-eff)/2) 0 0;
+        border-radius: calc(var(--round-eff)* 4/5) calc(var(--round-eff)* 4/5) 0 0;
     }
     nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent > ul:has(ul#dropdown) > li.dropdown.show > ul#dropdown >li:last-child{
         border: none;
-        border-radius: 0 0 calc(var(--round-eff)/2) calc(var(--round-eff)/2);
+        border-radius: 0 0 calc(var(--round-eff)* 4/5) calc(var(--round-eff)* 4/5);
     }
     nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent > ul:has(ul#dropdown) > li.dropdown.show > ul#dropdown >li:hover{
             background-color: #fff1;
@@ -264,12 +264,12 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
         color: var(--color) !important;
     }
     nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent >ul.navbar-nav.ml-auto.mr-0>li.dropdown.show >div>a:first-child{
-        border-radius: calc(var(--round-eff)/2) calc(var(--round-eff)/2) 0 0;
+        border-radius: calc(var(--round-eff)* 4/5) calc(var(--round-eff)* 4/5) 0 0;
         
     }
     nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent >ul.navbar-nav.ml-auto.mr-0>li.dropdown.show >div>a:last-child{
         border: none;
-        border-radius: 0 0 calc(var(--round-eff)/2) calc(var(--round-eff)/2);
+        border-radius: 0 0 calc(var(--round-eff)* 4/5) calc(var(--round-eff)* 4/5);
     }
 
 /*  */
