@@ -1,27 +1,26 @@
 
-
-
 :root {
     --color: rgb(var(--raw-color));
-    --raw-color: 35, 135, 255; /*35, 135, 255*/
+    --raw-color: 35, 135, 255; /* 35, 135, 255 */
     --bg-c: rgb(var(--raw-bg-c));
     --raw-bg-c: 26, 26, 26;
     --brightness-eff:1.2;
+    --round-eff: .5rem; /* .5rem */ /*the best range is from 0 to 1*/
     --ratio : 5/7;
     --shadow-efect : 0 0 .3rem;
     --shadow-efect-hover :.5rem;
-    --clamp-historia: clamp(120px, 10.5vw, 10rem);
-    --clamp-polecane: clamp(100px,6.8vw, 9rem);
-    --trans-Bc : #0004;
+    --clamp-historia: clamp(120px, 10vw, 12rem);
+    --clamp-polecane: clamp(100px, 7vw, 9rem);
+    --trans-Bc : #0008;
     --blur-Bc : 5px;
-    --ep-color : #333;
-    --ep-color-watched: #22aa55;
+    --ep-border-color : #333;
+    --ep-border-color-watched: #22aa55;
     --ep-list-number-bg: #111;
     --filer-color:#882222;
-    --ep-lis-border: solid 1px;
+    --ep-lis-border: solid 2px;
     --anime-card-W: clamp(6.5rem,7vw, 9rem);
+    --icon-gradient: hsl(from var(--color) calc(h - 1001) calc(s + 500) calc(l + 75)), var(--color) 1.2rem ;
 }
-
 
 @media (max-width: 1400px){
     html{
@@ -34,7 +33,7 @@
 @media( max-width: 1200px){
     nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent:has(ul#dropdown) > ul > li:first-child>a:after{
     mask-image: url('https://cdn.ogladajanime.pl/images/oaIcon.png') !important;
-        scale: 0.9;
+        scale: 0.8;
     left: -.3rem !important;
     top: -.3rem !important;
 }
@@ -55,15 +54,15 @@
 [data-theme="dark"] {
     background-color: var(--bg-c) !Important;
 }
-body::-webkit-scrollbar {
+*::-webkit-scrollbar {
     width: 0.4rem !important;
 }
-body::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
     background: var(--color) !important;
     border-radius: 2rem !important;
 }
-body::-webkit-scrollbar-track {
-    background: #3388ff22 !important;
+*::-webkit-scrollbar-track {
+    background: color-mix(in srgb, var(--bg-c) 100%, var(--color) 10%) !important;
 }
 
 body{
@@ -128,7 +127,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     content:'' !important;
     inset: 0;
     mix-blend-mode: overlay !important;
-    background-color: var(--color) !important;
+    background: linear-gradient( var(--icon-gradient)) !important;
     pointer-events: none !important;
     mask-image: url('https://cdn.ogladajanime.pl/images/oa3.png');
 }
@@ -151,7 +150,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     margin: auto 0 !important;
     padding: .2rem .5rem !important;
     font-size: 1rem;
-    border-radius: .5rem;
+    border-radius: var(--round-eff);
     font-weight: 500;
     text-wrap: nowrap !important;
 }
@@ -175,7 +174,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
         display: flex;
         flex-direction: column;
         top: 100%;
-        border-radius: .5rem;
+        border-radius: var(--round-eff);
         padding: .2rem !important;
         border: 1px solid var(--color);
         background-color: #222 !important;
@@ -185,11 +184,11 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
         padding: .2rem !important;
     }
     nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent > ul:has(ul#dropdown) > li.dropdown.show > ul#dropdown >li:first-child{
-        border-radius: .25rem .25rem 0 0;
+        border-radius: calc(var(--round-eff)/2) calc(var(--round-eff)/2) 0 0;
     }
     nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent > ul:has(ul#dropdown) > li.dropdown.show > ul#dropdown >li:last-child{
         border: none;
-        border-radius: 0 0 .25rem .25rem;
+        border-radius: 0 0 calc(var(--round-eff)/2) calc(var(--round-eff)/2);
     }
     nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent > ul:has(ul#dropdown) > li.dropdown.show > ul#dropdown >li:hover{
             background-color: #fff1;
@@ -226,7 +225,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
         margin: auto 0 !important;
         padding: .2rem .5rem !important;
         font-size: 1rem;
-        border-radius: .5rem;
+        border-radius: var(--round-eff);
         font-weight: 500;
     }
     nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent >ul.navbar-nav.ml-auto.mr-0>li.dropdown>button:hover{
@@ -247,7 +246,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
         display: flex;
         width: max-content;
         flex-direction: column;
-        border-radius: .5rem;
+        border-radius: var(--round-eff);
         padding: .2rem !important;
         border: 1px solid var(--color);
         background-color: #222 !important;
@@ -265,12 +264,12 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
         color: var(--color) !important;
     }
     nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent >ul.navbar-nav.ml-auto.mr-0>li.dropdown.show >div>a:first-child{
-        border-radius: .25rem .25rem 0 0;
+        border-radius: calc(var(--round-eff)/2) calc(var(--round-eff)/2) 0 0;
         
     }
     nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent >ul.navbar-nav.ml-auto.mr-0>li.dropdown.show >div>a:last-child{
         border: none;
-        border-radius: 0 0 .25rem .25rem;
+        border-radius: 0 0 calc(var(--round-eff)/2) calc(var(--round-eff)/2);
     }
 
 /*  */
@@ -282,7 +281,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
         position: relative;
     }
     nav>#navBarSearchForm > input{
-        border-radius: .5rem;
+        border-radius: var(--round-eff);
         border: 1px solid #666;
         padding: .2rem .5rem !important;
         color: #666;
@@ -298,7 +297,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
         display: flex;
         flex-direction: column;
         border: 1px solid var(--color);
-        border-radius: .5rem;
+        border-radius: var(--round-eff);
         padding: .2rem !important;
     }
     nav>#navBarSearchForm>#searchInputautocomplete-list>div{
@@ -310,11 +309,11 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
         color: var(--color);
     }
     nav>#navBarSearchForm>#searchInputautocomplete-list>div:last-child{
-        border-radius: 0 0 .25rem .25rem;
+        border-radius: 0 0 calc(var(--round-eff)/2) calc(var(--round-eff)/2);
         border:none;
     }
     nav>#navBarSearchForm>#searchInputautocomplete-list>div:first-child{
-        border-radius: .25rem .25rem 0 0;
+        border-radius: calc(var(--round-eff)/2) calc(var(--round-eff)/2) 0 0;
     }
     nav>#navBarSearchForm>#searchInputautocomplete-list>div:hover{
         background-color: #fff1;
@@ -328,23 +327,38 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     nav:has(#navBarSearchForm) > button.btn.btn-primary.mx-2.mr-auto.px-1.px-xl-2{
         background-color: var(--color);
         padding: .2rem .5rem !important;
-        border-radius: .5rem;
+        border-radius: var(--round-eff);
         margin: .2rem 0 !important;
         font-weight: 500;
     }
 
 /* polecane */
 .col-12.m-0.p-0.mb-2:has(h3.m-0){
-    all: unset !important;
+    all: unset ;
     display: flex !important;
     flex-direction: column !important;
     margin-top: 1rem !important;
+    position: relative;
+    &:after{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        pointer-events: none;
+        content: '';
+        z-index: 10;
+        aspect-ratio: 1/1;
+        height: .5rem;
+        border: 1px solid var(--color);
+        background-color: var(--bg-c);
+    }
 }
 .col-12.m-0.p-0.mb-2:has(h3.m-0) h3.m-0{
     display: none !important;
 }
 .col-12.m-0.p-0.mb-2:has(h3.m-0) *{
-    all: unset !important;
+    all: unset ;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 .col-12.m-0.p-0.mb-2:has(h3.m-0)::before{
     content: "polecane";
@@ -352,77 +366,82 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     font-weight: 500;
     padding: 0 2rem;
     background: rgba(var(--raw-color),.5);
-    border-radius: 8px 8px 0px 0px;
-    width: fit-content;
-}
+    border-radius: var(--round-eff) var(--round-eff) 0 0;
+    width: fit-content;  
+}      
 .col-12.m-0.p-0.mb-2:has(h3.m-0) > div{
-/*     justify-content: space-around !important; */
-    background-color: var(--trans-Bc)!important;
+/*     position: relative; */
+    background-color: var(--trans-Bc);
     padding: 1rem !important;
-    border: 1px solid var(--color) !important;
-    border-radius: .5rem !important;
-    border-top-left-radius: 0 !important;
-    display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(126px,1fr)) !important;
-    grid-template-rows: repeat(3, 1fr) !important;
-    flex-wrap: wrap !important;
-    column-gap: .8rem !important;
-    row-gap: .8rem !important;
+    border: 1px solid var(--color) ;
+    border-radius: var(--round-eff) ;
+    border-top-left-radius: 0 ;
+    display: grid ;
+    grid-template-columns: repeat(auto-fit, minmax(126px,1fr)) ;
+    column-gap: .8rem ;
+    row-gap: .8rem ;
+    height: 13rem;
+    min-height: 13rem;
+    max-height: fit-content;
+    overflow: auto !important;
+    resize: vertical ;
+    
 }
 .col-12.m-0.p-0.mb-2:has(h3.m-0) > div > div{
-    box-shadow: var(--color) var(--shadow-efect) !important;
-    border-radius: .5rem !important;
-    transition: 0.3s !important;
-    width: fit-content !important;
-    text-align: center !important;
+    box-shadow: var(--color) var(--shadow-efect) ;
+    border-radius: var(--round-eff) ;
+    transition: 0.3s ;
     display: flex !important;
-    justify-self: center !important;
+    aspect-ratio: var(--ratio) !important;
+    width: var(--clamp-polecane) !important;
 }
 .col-12.m-0.p-0.mb-2:has(h3.m-0) > div > div:has(img:hover){
     --shadow-efect : 0 0 calc(var(--shadow-efect-hover)*2);
 }
 .col-12.m-0.p-0.mb-2:has(h3.m-0) > div > div div{
-    display: flex !important;
-    flex-direction: column !important;
-    border-radius: .5rem !important;
+    display: flex ;
+    flex-direction: column ;
+    border-radius: var(--round-eff) ;
 }
 .col-12.m-0.p-0.mb-2:has(h3.m-0) a{
-    display: flex !important;
-    border-radius: 0.5rem !important;
-    overflow: hidden !important;
+    display: flex ;
+    border-radius: var(--round-eff) ;
+    overflow: hidden ;
 }
 .col-12.m-0.p-0.mb-2:has(h3.m-0) img{
     aspect-ratio: var(--ratio) !important;
     width: var(--clamp-polecane) !important;
 }
 .col-12.m-0.p-0.mb-2:has(h3.m-0) > div > div >div{
-    position: relative !important;
+    position: relative ;
 }
 .col-12.m-0.p-0.mb-2:has(h3.m-0) div.text-center.ml-1.mr-1.text-trim.text-bold{
-    display: inline !important;
-    overflow: hidden !important;
-    white-space: nowrap !important;
-    text-overflow: ellipsis !important;
-    bottom: 0 !important;
-    position: absolute !important;
-    z-index: 1 !important;
-    height: 2rem !important;
-    width: 100% !important;
-    border-radius: 0 0 0.5rem 0.5rem !important;
-    transition: ease-out 0.4s !important;
-    background-color: #0008 !important;
-    backdrop-filter: blur(var(--blur-Bc)) !important;
+    display: inline ;
+    overflow: hidden ;
+    white-space: nowrap ;
+    text-overflow: ellipsis ;
+    position: absolute ;
+    bottom: -.1rem;
+    z-index: 1 ;
+    min-height: 2rem;
+    height: 2rem;
+    width: 100% ;
+    border-radius: 0 0 var(--round-eff) var(--round-eff) ;
+    transition: ease-out 0.4s ;
+    background-color: #0008 ;
+    backdrop-filter: blur(var(--blur-Bc)) ;
     padding: 0 0.4rem !important;
-    box-sizing: border-box !important;
-    font-weight: 500 !important;
+    box-sizing: border-box ;
+    font-weight: 500 ;
 }
 .col-12.m-0.p-0.mb-2:has(h3.m-0) div.text-center.ml-1.mr-1.text-trim.text-bold:hover{
-    transition-delay: 0.3s !important;
-    height: 100% !important;
-    white-space: normal !important;
-    border-radius: 0.5rem !important;
-    text-overflow: clip !important;
-    text-align: center !important;
+    transition-delay: 0.3s ;
+    height: 100%;
+    max-height: 100% ;
+    white-space: normal ;
+    border-radius: var(--round-eff) ;
+    text-overflow: clip ;
+    text-align: center ;
 }
 
 
@@ -439,7 +458,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     font-weight: 500 !important;
     padding: 0 2rem !important;
     background: rgba(var(--raw-color),.5) !important;
-    border-radius: .5rem .5rem 0 0 !important;
+    border-radius: var(--round-eff) var(--round-eff) 0 0 !important;
     width: fit-content !important;
 }
 .col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) > h3 {
@@ -447,7 +466,8 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
 }
 .col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) > div {
     border: 1px solid var(--color) !important;
-    border-radius: 0 .5rem .5rem .5rem !important;
+    border-radius: var(--round-eff)!important;
+    border-top-left-radius: 0 !important;
     background-color: var(--trans-Bc) !important;
     gap: 1rem !important;
     padding: 1rem 1rem 2.7rem 1rem!important;
@@ -502,7 +522,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
 .col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) > div > div > div > div > div:nth-child(1) a {
     aspect-ratio: var(--ratio) !important;
     display: flex !important;
-    border-radius: 0.5rem !important;
+    border-radius: var(--round-eff) !important;
     overflow: hidden !important;
     position: relative !important;
 }
@@ -516,7 +536,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     z-index: 1 !important;
     height: 2rem !important;
     width: 100% !important;
-    border-radius: 0 0 0.5rem 0.5rem !important;
+    border-radius: 0 0 var(--round-eff) var(--round-eff) !important;
     transition: ease-out 0.4s !important;
     background-color: #0008;
     backdrop-filter: blur(var(--blur-Bc)) !important;
@@ -526,7 +546,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     transition-delay: 0.3s !important;
     height: 100% !important;
     white-space: normal !important;
-    border-radius: 0.5rem !important;
+    border-radius: var(--round-eff) !important;
     text-overflow: clip !important;
 }
     /*clik*/
@@ -536,7 +556,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     padding: .3rem !important;
     background: var(--color) !important;
     border: solid 1px var(--color) !important;
-    border-radius: .5rem !important;
+    border-radius: var(--round-eff) !important;
     transition: 0.3s !important;
 }
 .col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) > div > div > div > div > :last-child:hover {
@@ -571,24 +591,20 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
 .col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) > div::scroll-button(right):disabled,
 .col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) > div::scroll-button(left):disabled {
     opacity: 0 !important;
-/*     background-color: var(--bg-c) !important;
-    color: #fff0 !important;
-    cursor: auto !important; */
 }
 .col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) > div::scroll-button(left) {
     content: "‹" !important;
     position-area: left center !important;
     transform: translate(50%) !important;
 }
-/* *{
-    overflow: scroll !important;
-} */
-
 
 
 
 /* anime */
-
+:root{
+    --video-padding: .5rem;
+    --video-round:calc(var(--round-eff) + var(--video-padding));
+}
 
 /* anime bottom box */
 .row.mx-xl-5.new-text:has(#ep_list){
@@ -633,20 +649,20 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     flex-direction: column !important;
     position: relative !important;
     background-color: #222 !important;
-    padding-top: .5rem !important;
+    padding-top: var(--video-padding) !important;
     overflow: hidden !important;
-    border-radius: .8rem !important;
+    border-radius: var(--video-round) !important;
 }
 .col-12.col-xl-3.order-2.order-xl-1.px-4:has(#ep_list) input{
     display: flex !important;
     border: 1px solid transparent !important;
     box-sizing: border-box !important;
     width: 80% !important;
-    padding: .2rem .5rem !important;
+    padding: .2rem var(--video-padding) !important;
     height: 2rem !important;
     margin-left: 2.5% !important;
     margin-bottom: 2.5% !important;
-    border-radius: .5rem !important;
+    border-radius: var(--round-eff) !important;
 }
 .col-12.col-xl-3.order-2.order-xl-1.px-4:has(#ep_list) input:focus{
     border: 1px solid var(--color) !important;
@@ -659,9 +675,9 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     box-sizing: border-box !important;
     width: 15% !important;
     justify-content: center !important;
-    padding: .5rem !important;
+    padding: var(--video-padding) !important;
     height: 2rem !important;
-    border-radius: .5rem !important;
+    border-radius: var(--round-eff) !important;
 }
 .col-12.col-xl-3.order-2.order-xl-1.px-4:has(#ep_list) button>i{
     display: inline-block !important;
@@ -676,7 +692,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
 }
 .col-12.col-xl-3.order-2.order-xl-1.px-4 #ep_list{
     background: #111 !important;
-    padding: .5rem !important;
+    padding: var(--video-padding) !important;
     display: grid !important;
     gap: .4rem !important;
     justify-content: space-around !important;
@@ -687,29 +703,29 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
 }
 .col-12.col-xl-3.order-2.order-xl-1.px-4 #ep_list li{
     display: flex !important;
-    border-radius: .5rem !important;
-    filter: drop-shadow(0 0 .15rem var(--ep-color)) !important;
+    border-radius: var(--round-eff) !important;
+    filter: drop-shadow(0 0 .15rem var(--ep-border-color)) !important;
 }
 .col-12.col-xl-3.order-2.order-xl-1.px-4 #ep_list li[style="display: none;"]{
     display: none !important;
 }
 .col-12.col-xl-3.order-2.order-xl-1.px-4 #ep_list li.watched{
-    --ep-color: var(--ep-color-watched);
+    --ep-border-color: var(--ep-border-color-watched);
     
 }
 .col-12.col-xl-3.order-2.order-xl-1.px-4 #ep_list li > div{
     display: flex !important;
-    border-radius: .5rem !important;
+    border-radius: var(--round-eff) !important;
     flex: 1 !important;
     position:relative !important;
 }
 .col-12.col-xl-3.order-2.order-xl-1.px-4 #ep_list li img{
     height: 1.25rem !important;
     position: absolute !important;
-    left: .25rem !important;
+    left: .3rem  !important;
     top: .08rem !important;
     overflow: hidden !important;
-    border-radius: .3rem !important;
+    border-radius: calc(var(--round-eff)* 3/5) !important;
 }
 .col-12.col-xl-3.order-2.order-xl-1.px-4 #ep_list li > div>div{
     display: flex !important;
@@ -725,8 +741,8 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     display: flex !important;
     font-size: 1.1rem !important;
     justify-content: center !important;
-    border: var(--ep-lis-border) var(--ep-color) !important;
-    border-radius: .5rem .5rem 0 0 !important;
+    border: var(--ep-lis-border) var(--ep-border-color) !important;
+    border-radius: var(--round-eff) var(--round-eff) 0 0 !important;
     font-weight: bold !important;
 }
 
@@ -738,14 +754,14 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     /* tytuł */
 .col-12.col-xl-3.order-2.order-xl-1.px-4 #ep_list li > div>div>p{
     background-color: #1a1a1a !important;
-    border-radius: 0 0 .5rem .5rem !important;
+    border-radius: 0 0 var(--round-eff) var(--round-eff) !important;
     text-align: center !important;
     min-height: 3rem !important;
     max-height: 3rem !important;
     line-height: 1.5rem !important;
     text-overflow: ellipsis !important;
     overflow: hidden !important;
-    border:  var(--ep-lis-border) var(--ep-color) !important;
+    border:  var(--ep-lis-border) var(--ep-border-color) !important;
     border-top: none !important;
     transition-property: max-height !important;
     transition-behavior: allow-discrete !important;
@@ -771,7 +787,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
 .col-12.col-xl-9.order-1.order-xl-2.px-2.mb-2:has(#playerLoader)>.row>.col-12>.row>.col-12:has(#playerLoader){
     box-shadow: .1rem .1rem 1rem #111, -.1rem -.1rem 1rem var(--color);
     padding: 0;
-    border-radius: .8rem;
+    border-radius: var(--video-round);
     overflow: hidden;
     transform: scale(.987) translateY(-.2rem);
     &>a#playerStartImg{
@@ -920,7 +936,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
                     &>ul.vjs-menu-content{
                         border: 1px solid var(--bg-c);
                         background-color:rgba( var(--raw-bg-c), .5);
-                        border-radius: .5rem;
+                        border-radius: var(--round-eff);
                         backdrop-filter: blur(var(--blur-Bc));
                         &>li:hover{
                             background-color: #fff8 ;
@@ -972,7 +988,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     all: unset;
     margin: 0 !important;
     padding: .2rem .5rem !important;
-    border-radius: .5rem;
+    border-radius: var(--round-eff);
     border: 1px solid #666;
     background-color: #6662;
     color: #666;
@@ -999,7 +1015,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
 }
 .col-12.mt-2.text-center:has(#next_ep_button)>div.btn-group >div{
     border: 1px solid var(--color);
-    border-radius: .5rem;
+    border-radius: var(--round-eff);
     padding: .5rem !important;
     width: fit-content !important;
     background-color: #222 !important;
@@ -1040,7 +1056,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
 .col-12.col-lg-3.m-0.px-xl-3:has(#similar_animes)>div.row:has(#showAnimeButton)>div button{
     flex: 1;
     margin: 0 !important;
-    border-radius: .5rem;
+    border-radius: var(--video-round);
     background-color: #6662;
     backdrop-filter: blur(.3rem);
     border: 2px solid #666 !important;
@@ -1076,7 +1092,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     flex: 1 !important;
     flex-direction: column !important;
     position: relative !important;
-    border-radius: .5rem !important;
+    border-radius: var(--round-eff) !important;
     transition: .3s !important;
 }
 .col-12.col-lg-3.m-0.px-xl-3 #similar_animes>div>div>div:hover{
@@ -1096,7 +1112,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     width: 100% !important;
     justify-content: center;
     background-color: #333 !important;
-    border-radius: 0 0 .5rem .5rem !important;
+    border-radius: 0 0 var(--round-eff) var(--round-eff) !important;
 }
 .col-12.col-lg-3.m-0.px-xl-3 #similar_animes>div>div>div>div.col-10.mb-0.pb-0>div.row>div.col-12.px-1.text-sm.align-self-end{
     display: none !important;
@@ -1142,7 +1158,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     backdrop-filter: blur(.2rem) !important;
     background-color: #0008 !important;
     padding: .1rem .3rem !important;
-    border-radius: .5rem !important;
+    border-radius: var(--round-eff) !important;
     filter: drop-shadow(0 0 .5rem #111) !important;
 }
     /* góra */
@@ -1155,7 +1171,7 @@ nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent
     aspect-ratio: var(--ratio) !important;
     width: var(--anime-card-W) !important;
     overflow: hidden !important;
-    border-radius: .5rem .5rem 0 0!important;
+    border-radius: var(--round-eff) var(--round-eff) 0 0!important;
 }
 .col-12.col-lg-3.m-0.px-xl-3 #similar_animes>div>div>div>div.col-2.m-0.p-0 a img{
     all: unset !important;
