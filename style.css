@@ -6,6 +6,7 @@
     --raw-bg-c: 26, 26, 26;
     --brightness-eff:1.2;
     --round-eff: .5rem; /* .5rem */ /*the best range is from 0 to 1*/
+	--border-W: 2px;
     --ratio : 5/7;
     --shadow-efect : 0 0 .3rem;
     --shadow-efect-hover : 0 0 .5rem;
@@ -17,9 +18,10 @@
     --ep-border-color-watched: #22aa55;
     --ep-list-number-bg: #111;
     --filer-color:#882222;
-    --ep-lis-border: solid 2px;
+    --ep-lis-border: solid var(--border-W);
     --anime-card-W: clamp(6.5rem,7vw, 9rem);
     --icon-gradient: hsl(from var(--color) calc(h - 1001) calc(s + 500) calc(l + 75)), var(--color) 1.2rem ;
+
 }
 
 @media (max-width: 1400px){
@@ -73,7 +75,7 @@ body{
 
 /* header */
 div[style="padding-top: 80px;"]{
-    display: none;
+    padding: 3.5rem !important;
 }
 nav:has(#navBarSearchForm)>button.navbar-toggler.m-0[type="button"]{
     display: none;
@@ -92,245 +94,272 @@ nav:has(#navBarSearchForm){
     --blur-in: .6rem;
     box-shadow: 0 0 2rem rgba(var(--raw-color), .5);
     justify-content: space-between;
-}
-nav:has(#navBarSearchForm) *{
-    all: unset;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent:has(ul#dropdown){
-    position: relative;
-}
-
-nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent:has(ul#dropdown) > ul{
-    display: flex !important;
-    flex-direction: row !important;
-    position: relative;
-    justify-content: center !important;
-    gap: .5rem;
-}
-nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent:has(ul#dropdown) > ul > li:first-child>a{
-    position: relative !important;
-    background-color: transparent;
-    &:hover{
-        filter: grayscale(70%);  
-    }
-}
-nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent:has(ul#dropdown) > ul > li:first-child>a>img{
-    filter: grayscale();
-    background-color: transparent;
-    
-}
-nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent:has(ul#dropdown) > ul > li:first-child>a:after{
-    position: absolute !important;
-    content:'' !important;
-    inset: 0;
-    mix-blend-mode: overlay !important;
-    background: linear-gradient( var(--icon-gradient)) !important;
-    pointer-events: none !important;
-    mask-image: url('https://cdn.ogladajanime.pl/images/oa3.png');
-}
-
-nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent:has(ul#dropdown) > ul > li:nth-child(n + 2)>span{
-    display: none !important;
-}
-
-nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent:has(ul#dropdown) > ul > li{
-    display: flex;
-}
-nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent:has(ul#dropdown) > ul > li:nth-child(n + 2)>a:hover{
-    filter: brightness(var(--brightness-eff));
-}
-nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent:has(ul#dropdown) > ul > li:nth-child(n + 2)>a{
-    border: 1px solid #666;
-    color: #666 !important;
-    background-color: #6662;
-    height: fit-content;
-    margin: auto 0 !important;
-    padding: .2rem .5rem !important;
-    font-size: 1rem;
-    border-radius: var(--round-eff);
-    font-weight: 500;
-    text-wrap: nowrap !important;
-}
-
-/*  */
-
-    /*   zakładka "anime"   */
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent > ul:has(ul#dropdown) > li.dropdown.show > a{
-        border-color: var(--color);
-        color: var(--color) !important;
-        background-color: rgba(var(--raw-color),.25);
-    }
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent > ul:has(ul#dropdown) > li.dropdown > a::after{
-        transform: translateY(50%)
-    }
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent > ul:has(ul#dropdown) > li.dropdown > ul#dropdown{
-        display: none;
-    }
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent > ul:has(ul#dropdown) > li.dropdown.show > ul#dropdown{
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        top: 100%;
-        border-radius: var(--round-eff);
-        padding: .2rem !important;
-        border: 1px solid var(--color);
-        background-color: #222 !important;
-    }
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent > ul:has(ul#dropdown) > li.dropdown.show > ul#dropdown >li{
-        border-bottom: dashed 1px var(--color);
-        padding: .2rem !important;
-    }
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent > ul:has(ul#dropdown) > li.dropdown.show > ul#dropdown >li:first-child{
-        border-radius: calc(var(--round-eff)* 4/5) calc(var(--round-eff)* 4/5) 0 0;
-    }
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent > ul:has(ul#dropdown) > li.dropdown.show > ul#dropdown >li:last-child{
-        border: none;
-        border-radius: 0 0 calc(var(--round-eff)* 4/5) calc(var(--round-eff)* 4/5);
-    }
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent > ul:has(ul#dropdown) > li.dropdown.show > ul#dropdown >li:hover{
-            background-color: #fff1;
-            filter: brightness(var(--brightness-eff));
-        }
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent > ul:has(ul#dropdown) > li.dropdown.show > ul#dropdown >li>*{
-        color: #666 !important;
-        font-weight: 500;
-    }
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent > ul:has(ul#dropdown) > li.dropdown.show > ul#dropdown >li:hover>*{
-        color: var(--color) !important;
-        font-weight: 500;
-    }
-
-/*  */
-
-    /* zakładka "panel" */
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent{
-        display: contents;
+	& *{
+		all: unset;
+    	margin: 0 !important;
+    	padding: 0 !important;
+	}
+	/* zakładka "panel" i "anime" */
+	& > div.collapse.navbar-collapse.navbarSupportedContent{
+		display: contents;
         text-wrap: nowrap !important;
-    }
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent >ul.navbar-nav.ml-auto.mr-0{
-                display: inline-flex;
-    }
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent >ul.navbar-nav.ml-auto.mr-0>li.dropdown{
-        position: relative;
-        display: flex;
-    }
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent >ul.navbar-nav.ml-auto.mr-0>li.dropdown>button{
-        border: 1px solid #666;
-        color: #666 !important;
-        background-color: #6662;
-        height: fit-content;
-        margin: auto 0 !important;
-        padding: .2rem .5rem !important;
-        font-size: 1rem;
-        border-radius: var(--round-eff);
-        font-weight: 500;
-    }
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent >ul.navbar-nav.ml-auto.mr-0>li.dropdown>button:hover{
-        filter: brightness(var(--brightness-eff));
-}
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent >ul.navbar-nav.ml-auto.mr-0>li.dropdown.show>button{
-        border-color: var(--color);
-        color: var(--color) !important;
-        background-color: rgba(var(--raw-color),.25);
-}
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent >ul.navbar-nav.ml-auto.mr-0>li.dropdown >div{
-        display: none;
-    }
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent >ul.navbar-nav.ml-auto.mr-0>li.dropdown.show >div{
-        position: absolute;
-        top: 100%;
-        right: 0;
-        display: flex;
-        width: max-content;
-        flex-direction: column;
-        border-radius: var(--round-eff);
-        padding: .2rem !important;
-        border: 1px solid var(--color);
-        background-color: #222 !important;
-    }
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent >ul.navbar-nav.ml-auto.mr-0>li.dropdown.show >div>a{
-        display: flex;
-        border-bottom: dashed 1px var(--color);
-        color: #666 !important;
-        font-weight: 500;
-        padding: .2rem !important;
-    }
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent >ul.navbar-nav.ml-auto.mr-0>li.dropdown.show >div>a:hover{
-        filter: brightness(var(--brightness-eff));
-        background-color: #fff1;
-        color: var(--color) !important;
-    }
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent >ul.navbar-nav.ml-auto.mr-0>li.dropdown.show >div>a:first-child{
-        border-radius: calc(var(--round-eff)* 4/5) calc(var(--round-eff)* 4/5) 0 0;
-        
-    }
-    nav:has(#navBarSearchForm) > div.collapse.navbar-collapse.navbarSupportedContent >ul.navbar-nav.ml-auto.mr-0>li.dropdown.show >div>a:last-child{
-        border: none;
-        border-radius: 0 0 calc(var(--round-eff)* 4/5) calc(var(--round-eff)* 4/5);
-    }
+		&>*>*:hover{
+			cursor: pointer;
+		}
+		/*  zakładka "panel"  */
+		&>ul.navbar-nav.ml-auto.mr-0{
+            display: inline-flex;
+			&>li.dropdown{
+				position: relative;
+        		display: flex;
+				&>button{
+					border: 1px solid #666;
+					color: #666 !important;
+					background-color: #6662;
+					height: fit-content;
+					margin: auto 0 !important;
+					padding: .2rem .5rem !important;
+					font-size: 1rem;
+					border-radius: var(--round-eff);
+					font-weight: 500;
+					&:hover{
+        				filter: brightness(var(--brightness-eff));
+					}
+				}
+				&>div{
+					display: none;
+				}
+				&.show{
+					&>button{
+						border-color: var(--color);
+						color: var(--color) !important;
+						background-color: rgba(var(--raw-color),.25);
+					}
+					&>div{
+						position: absolute;
+						top: 100%;
+						right: 0;
+						display: flex;
+						width: max-content;
+						flex-direction: column;
+						border-radius: var(--round-eff);
+						padding: .2rem !important;
+						border: 1px solid var(--color);
+						background-color: #222 !important;
+						&>a{
+							display: flex;
+							border-bottom: dashed 1px var(--color);
+							color: #666 !important;
+							font-weight: 500;
+							padding: .2rem !important;
+							&:hover{
+								filter: brightness(var(--brightness-eff));
+								background-color: #fff1;
+								color: var(--color) !important;
+							}
+							&:first-child{
+        						border-radius: calc(var(--round-eff)* 4/5) calc(var(--round-eff)* 4/5) 0 0;
+							}
+							&:last-child{
+								border: none;
+        						border-radius: 0 0 calc(var(--round-eff)* 4/5) calc(var(--round-eff)* 4/5);
+							}
+						}
+					}
+				}
+			}
+    	}
+		/*	zakładka "anime"  */
+		&:has(ul#dropdown){
+			position: relative;
+			&> ul{
+				display: flex !important;
+				flex-direction: row !important;
+				position: relative;
+				justify-content: center !important;
+				gap: .5rem;
+				&> li{
+					display: flex;
+					&:first-child{
+						position: relative !important;
+						background-color: transparent;
+						&:hover{
+							filter: grayscale(70%);  
+						}
+						&>a{
+							&>img{
+								filter: grayscale();
+								background-color: transparent;
+							}
+							&:after{
+								position: absolute !important;
+								content:'' !important;
+								inset: 0;
+								mix-blend-mode: overlay !important;
+								background: linear-gradient( var(--icon-gradient)) !important;
+								pointer-events: none !important;
+								mask-image: url('https://cdn.ogladajanime.pl/images/oa3.png');
+							}
+						}
+					
+					}
+					&:nth-child(n + 2){
+						&>span{
+							display: none !important;	
+						}
+						&>a{
+							&:hover{
+								filter: brightness(var(--brightness-eff));
+							}
+							border: 1px solid #666;
+							color: #666 !important;
+							background-color: #6662;
+							height: fit-content;
+							margin: auto 0 !important;
+							padding: .2rem .5rem !important;
+							font-size: 1rem;
+							border-radius: var(--round-eff);
+							font-weight: 500;
+							text-wrap: nowrap !important;
+						}
+					}	
+					&.dropdown{
+						&>a::after{
+							transform: translateY(50%)
+						}
+						&>ul#dropdown{
+							display: none;
+						}
+					}
+					&.dropdown.show{
+						&>a{
+							border-color: var(--color);
+							color: var(--color) !important;
+							background-color: rgba(var(--raw-color),.25);
+						}
+						&>ul#dropdown{
+							position: absolute;
+							display: flex;
+							flex-direction: column;
+							top: 100%;
+							border-radius: var(--round-eff);
+							padding: .2rem !important;
+							border: 1px solid var(--color);
+							background-color: #222 !important;
+							&>li{
+								border-bottom: dashed 1px var(--color);
+								padding: .2rem !important;
+								&>*{
+									color: #666 !important;
+									font-weight: 500;
+								}
+								&:first-child{
+									border-radius: calc(var(--round-eff)* 4/5) calc(var(--round-eff)* 4/5) 0 0;
+								}
+								&:last-child{
+									border: none;
+									border-radius: 0 0 calc(var(--round-eff)* 4/5) calc(var(--round-eff)* 4/5);
+								}
+								&:hover{
+									background-color: #fff1;
+									filter: brightness(var(--brightness-eff));
+									&>*{
+										color: var(--color) !important;
+									}
+								}
 
-/*  */
-
-    /* input */
-    nav>#navBarSearchForm{
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		&:has(button[onclick="showLogin(); return false;"]){
+			overflow: hidden;
+			border-radius: var(--round-eff);
+			display: flex;
+			margin: .2rem !important;
+			font-weight: 500;
+			&>*{
+				transition: .3s ;
+				background-color: #666;
+				padding: 0 .5rem !important;
+				border-left: dashed calc(var(--border-W) / 2) #333;
+				border-right: dashed calc(var(--border-W) / 2) #333;
+				&:hover{
+					background-color: var(--color);
+					cursor: pointer;
+				}
+			}
+			&>:first-child{
+				border-left: none;
+			}
+			&>:last-child{
+				border-right: none;
+			}
+		}
+	}
+	/* 	input  */
+	&>#navBarSearchForm{
         display: flex;
         padding: .2rem 0!important;
         position: relative;
+		&>input{
+			border-radius: var(--round-eff);
+        	border: 1px solid #666;
+        	padding: .2rem .5rem !important;
+        	color: #666;
+			&:focus{
+				border-color: var(--color);
+        		color: var(--color);
+			}
+		}
+		&>#searchInputautocomplete-list{
+			position: absolute;
+        	top: 100%;
+        	background-color: #222;
+        	display: flex;
+        	flex-direction: column;
+        	border: 1px solid var(--color);
+        	border-radius: var(--round-eff);
+        	padding: .2rem !important;
+			&>div{
+				border-bottom: 1px dashed var(--color);
+        		color: #666;
+				& strong{
+					font-weight: 500 ;
+					color: var(--color) ;
+				}
+				&:last-child{
+					border-radius: 0 0 calc(var(--round-eff)/2) calc(var(--round-eff)/2);
+                	border:none;
+				}
+				&:first-child{
+        			border-radius: calc(var(--round-eff)/2) calc(var(--round-eff)/2) 0 0;
+				}
+				&:hover{
+					background-color: #fff1;
+        			filter: brightness(var(--brightness-eff));
+				}
+			}
+			
+			
+		}
     }
-    nav>#navBarSearchForm > input{
-        border-radius: var(--round-eff);
-        border: 1px solid #666;
-        padding: .2rem .5rem !important;
-        color: #666;
-    }
-    nav>#navBarSearchForm > input:focus{
-        border-color: var(--color);
-        color: var(--color);
-    }
-    nav>#navBarSearchForm>#searchInputautocomplete-list{
-        position: absolute;
-        top: 100%;
-        background-color: #222;
-        display: flex;
-        flex-direction: column;
-        border: 1px solid var(--color);
-        border-radius: var(--round-eff);
-        padding: .2rem !important;
-    }
-    nav>#navBarSearchForm>#searchInputautocomplete-list>div{
-        border-bottom: 1px dashed var(--color);
-        color: #666;
-    }
-    nav>#navBarSearchForm>#searchInputautocomplete-list>div strong{
-        font-weight: 500;
-        color: var(--color);
-    }
-    nav>#navBarSearchForm>#searchInputautocomplete-list>div:last-child{
-        border-radius: 0 0 calc(var(--round-eff)/2) calc(var(--round-eff)/2);
-        border:none;
-    }
-    nav>#navBarSearchForm>#searchInputautocomplete-list>div:first-child{
-        border-radius: calc(var(--round-eff)/2) calc(var(--round-eff)/2) 0 0;
-    }
-    nav>#navBarSearchForm>#searchInputautocomplete-list>div:hover{
-        background-color: #fff1;
-        filter: brightness(var(--brightness-eff));
-    }
-
-/*  */
-
-    /* wyszukiwarka */
-
-    nav:has(#navBarSearchForm) > button.btn.btn-primary.mx-2.mr-auto.px-1.px-xl-2{
+	/*  wyszukiwarka  */
+	&>button.btn.btn-primary.mx-2.mr-auto.px-1.px-xl-2{
         background-color: var(--color);
         padding: .2rem .5rem !important;
         border-radius: var(--round-eff);
         margin: .2rem 0 !important;
         font-weight: 500;
+		&:hover{
+			cursor: pointer;
+		}
     }
+}
+
 
 /* main bottom left box */
 div.col-12.col-xl-9:has(.col-12.m-0.p-0.mb-2 > h3.m-0){
@@ -338,7 +367,7 @@ div.col-12.col-xl-9:has(.col-12.m-0.p-0.mb-2 > h3.m-0){
     display: flex;
     flex-direction: column;
     flex: 3;
-/*     border: 1px solid red; */
+    border: 1px solid red !important;
     margin-right: 4rem ;
     /*polecane */
     .col-12.m-0.p-0.mb-2:has(h3.m-0)
@@ -451,6 +480,7 @@ div.col-12.col-xl-9:has(.col-12.m-0.p-0.mb-2 > h3.m-0){
         }
     }
     /*      */
+	
 }
 
 /*  */
