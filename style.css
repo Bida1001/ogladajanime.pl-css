@@ -1,32 +1,45 @@
 :root {
-    --color: rgb(var(--raw-color));
-    --raw-color: 35, 135, 255;
-    /* 35, 135, 255 */
-    --sec-color: rgb(var(--raw-sec-color));
-    --raw-sec-color: 50, 50, 50;
-    /* 50, 50, 50 */
-    --bg-c: rgb(var(--raw-bg-c));
-    --raw-bg-c: 25, 25, 25;
+    --color: rgb(35, 135, 255);
+	/*35, 135, 255*/
+    --sec-color: rgb(50,50,50);
+	/* 50,50,50 */
+    --bg-c: rgb(25,25,25);
+	/* 25,25,25 */
     --brightness-eff: 1.2;
     --round-eff: .5rem;
     /* .5rem */
     /*the best range is from 0 to 1*/
     --border-W: 2px;
+	--border-W-active: .2rem;
     --ratio: 5/7;
-    --shadow-efect: 0 0 0.3rem;
-    --shadow-efect-hover: 0 0 0.5rem;
+
     --clamp-historia: clamp(120px, 10vw, 12rem);
     --clamp-polecane: clamp(100px, 7vw, 9rem);
-    --trans-Bc: #0008;
-    --blur-Bc: 5px;
-    --ep-border-color: var(--sec-color);
+    --ep-lis-border: solid var(--border-W);
+    --anime-card-W: clamp(6.5rem, 7vw, 9rem);
+    --icon-gradient: hsl(from var(--color) calc(h - 1001) calc(s + 500) calc(l + 75)),var(--color) 1.2rem;
+}
+/* "new colors" - beta */
+:root{
+	--color-dark:hsl( from var(--color) h calc(s - 20) calc(l - 20));
+    --color-darker:hsl( from var(--color) h s calc(l - 30));
+    --sec-color-light:hsl( from var(--sec-color) h s calc(l + 20));
+    --sec-color-dark:hsl( from var(--sec-color) h s calc(l - 7));
+    --sec-color-darker:hsl( from var(--sec-color) h s calc(l - 12));
+	--t-50-bg-c:hsl(from var(--bg-c) h s l / .5);
     --ep-border-color-watched: #22aa55;
     --ep-list-number-bg: #111;
     --filer-color: #882222;
-    --ep-lis-border: solid var(--border-W);
-    --anime-card-W: clamp(6.5rem, 7vw, 9rem);
-    --icon-gradient: hsl(from var(--color) calc(h - 1001) calc(s + 500) calc(l + 75)),
-        var(--color) 1.2rem;
+
+}
+/* beta */
+:root{
+	--ep-border-color: var(--sec-color);
+	--ep-border-style: solid;
+	--ep-border-W: var(--border-W);
+	--ep-border: var(--ep-border-style) var(--ep-border-W) var(--ep-border-color);
+	--ep-border-watched: var(--ep-border-style) var(--ep-border-W) var(--ep-border-color-watched);
+	--grid-main-21:7;
 }
 
 @media (max-width: 1400px) {
@@ -38,7 +51,11 @@
         transform: scale(0.96) !important;
     }
 }
-
+@media (max-width: 1300px) {
+	html {
+		font-size: 13px;
+	}
+}
 @media (max-width: 1200px) {
     nav:has(#navBarSearchForm)>div.collapse.navbar-collapse.navbarSupportedContent:has(ul#dropdown)>ul>li:first-child>a:after {
         mask-image: url("https://cdn.ogladajanime.pl/images/oaIcon.png") !important;
@@ -46,18 +63,24 @@
         left: -0.3rem !important;
         top: -0.3rem !important;
     }
-
-    @media (max-width: 1300px) {
-        html {
-            font-size: 13px;
-        }
-    }
+	:root{
+		--grid-main-21:5;
+	}
 }
 
 @media (max-width: 1000px) {
     html {
         font-size: 12px;
     }
+	:root{
+		--grid-main-21:4;
+	}
+}
+
+@media (max-width: 800px) {
+	:root{
+		--grid-main-21:3;
+	}
 }
 
 [data-theme="dark"] {
@@ -100,9 +123,9 @@ nav:has(#navBarSearchForm) {
     left: 0;
     top: 0;
     right: 0;
-    background-color: #222 !important;
+    background-color: var(--sec-color-dark) !important;
     --blur-in: 0.6rem;
-    box-shadow: 0 0 2rem rgba(var(--raw-color), 0.5);
+    box-shadow: 0 0 2rem var(--color-darker);
     justify-content: space-between;
 
     & * {
@@ -129,17 +152,16 @@ nav:has(#navBarSearchForm) {
                 display: flex;
 
                 &>button {
-                    border: 1px solid #666;
-                    color: #666 !important;
-                    background-color: #6662;
+                    border: 1px solid var(--sec-color-light);
+                    color: var(--sec-color-light) !important;
+                    background-color: var(--sec-color);
                     height: fit-content;
                     margin: auto 0 !important;
                     padding: 0.2rem 0.5rem !important;
                     font-size: 1rem;
                     border-radius: var(--round-eff);
                     font-weight: 500;
-
-                    &:hover {
+                    &:hover{
                         filter: brightness(var(--brightness-eff));
                     }
                 }
@@ -152,7 +174,8 @@ nav:has(#navBarSearchForm) {
                     &>button {
                         border-color: var(--color);
                         color: var(--color) !important;
-                        background-color: rgba(var(--raw-color), 0.25);
+                        background-color: var(--color-darker);
+                        filter: unset;
                     }
 
                     &>div {
@@ -165,17 +188,16 @@ nav:has(#navBarSearchForm) {
                         border-radius: var(--round-eff);
                         padding: 0.2rem !important;
                         border: 1px solid var(--color);
-                        background-color: #222 !important;
+                        background-color: var(--sec-color-dark) !important;
 
                         &>a {
                             display: flex;
                             border-bottom: dashed 1px var(--color);
-                            color: #666 !important;
+                            color: var(--sec-color-light) !important;
                             font-weight: 500;
                             padding: 0.2rem !important;
 
                             &:hover {
-                                filter: brightness(var(--brightness-eff));
                                 background-color: #fff1;
                                 color: var(--color) !important;
                             }
@@ -194,7 +216,7 @@ nav:has(#navBarSearchForm) {
             }
         }
 
-        /*	zakładka "anime"  */
+        /*	lista z zakładką "anime"  */
         &:has(ul#dropdown) {
             position: relative;
 
@@ -233,20 +255,16 @@ nav:has(#navBarSearchForm) {
                             }
                         }
                     }
-
+                    /*	zakładka "anime"  */
                     &:nth-child(n + 2) {
                         &>span {
                             display: none !important;
                         }
 
                         &>a {
-                            &:hover {
-                                filter: brightness(var(--brightness-eff));
-                            }
-
-                            border: 1px solid #666;
-                            color: #666 !important;
-                            background-color: #6662;
+                            border: 1px solid var(--sec-color-light);
+                            color: var(--sec-color-light) !important;
+                            background-color: var(--sec-color);
                             height: fit-content;
                             margin: auto 0 !important;
                             padding: 0.2rem 0.5rem !important;
@@ -254,6 +272,9 @@ nav:has(#navBarSearchForm) {
                             border-radius: var(--round-eff);
                             font-weight: 500;
                             text-wrap: nowrap !important;
+                            &:hover{
+                                filter: brightness(var(--brightness-eff));
+                            }
                         }
                     }
 
@@ -271,7 +292,8 @@ nav:has(#navBarSearchForm) {
                         &>a {
                             border-color: var(--color);
                             color: var(--color) !important;
-                            background-color: rgba(var(--raw-color), 0.25);
+                            background-color: var(--color-darker);
+                            filter: unset;
                         }
 
                         &>ul#dropdown {
@@ -282,14 +304,14 @@ nav:has(#navBarSearchForm) {
                             border-radius: var(--round-eff);
                             padding: 0.2rem !important;
                             border: 1px solid var(--color);
-                            background-color: #222 !important;
+                            background-color: var(--sec-color-dark) !important;
 
                             &>li {
                                 border-bottom: dashed 1px var(--color);
                                 padding: 0.2rem !important;
 
                                 &>* {
-                                    color: #666 !important;
+                                    color: var(--sec-color-light) !important;
                                     font-weight: 500;
                                 }
 
@@ -304,8 +326,6 @@ nav:has(#navBarSearchForm) {
 
                                 &:hover {
                                     background-color: #fff1;
-                                    filter: brightness(var(--brightness-eff));
-
                                     &>* {
                                         color: var(--color) !important;
                                     }
@@ -316,7 +336,7 @@ nav:has(#navBarSearchForm) {
                 }
             }
         }
-
+        /* logowanie */
         &:has(button[onclick="showLogin(); return false;"]) {
             overflow: hidden;
             border-radius: var(--round-eff);
@@ -326,10 +346,10 @@ nav:has(#navBarSearchForm) {
 
             &>* {
                 transition: 0.3s;
-                background-color: #666;
+                background-color: var(--sec-color-light);
                 padding: 0 0.5rem !important;
-                border-left: dashed calc(var(--border-W) / 2) #333;
-                border-right: dashed calc(var(--border-W) / 2) #333;
+                border-left: dashed calc(var(--border-W) / 2) var(--sec-color);
+                border-right: dashed calc(var(--border-W) / 2) var(--sec-color);
 
                 &:hover {
                     background-color: var(--color);
@@ -355,9 +375,9 @@ nav:has(#navBarSearchForm) {
 
         &>input {
             border-radius: var(--round-eff);
-            border: 1px solid #666;
+            border: 1px solid var(--sec-color-light);
             padding: 0.2rem 0.5rem !important;
-            color: #666;
+            color: var(--sec-color-light);
 
             &:focus {
                 border-color: var(--color);
@@ -368,7 +388,7 @@ nav:has(#navBarSearchForm) {
         &>#searchInputautocomplete-list {
             position: absolute;
             top: 100%;
-            background-color: #222;
+            background-color: var(--sec-color-dark);
             display: flex;
             flex-direction: column;
             border: 1px solid var(--color);
@@ -377,7 +397,7 @@ nav:has(#navBarSearchForm) {
 
             &>div {
                 border-bottom: 1px dashed var(--color);
-                color: #666;
+                color: var(--sec-color-light);
 
                 & strong {
                     font-weight: 500;
@@ -412,17 +432,27 @@ nav:has(#navBarSearchForm) {
         &:hover {
             cursor: pointer;
         }
+        &:active{
+            background-color: var(--color-dark);
+        }
     }
+}
+
+/* home / main */
+div.container-fluid.main-container:has(h3.mb-0.ml-3) > .section > div.row.m-0.p-0{
+	display: flex;
+	gap: 3rem;
+	--i-padding:.5rem;
+	--i-round-eff:calc(var(--round-eff) + var(--i-padding));
 }
 
 /* home / main top */
 div.col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) {
     all: unset;
-    width: 100%;
 	position: relative;
-	--i-padding:.5rem;
-	--i-sec-color:color-mix(in srgb, var(--sec-color)100%,#000 45%);
-	--i-round-eff:calc(var(--i-padding) + var(--round-eff));
+	width: 100%;
+    --i-active-color:color-mix(in srgb, var(--sec-color-dark) 100%, var(--color) 100%);
+    --i-nonactive-color:color-mix(in srgb,var(--bg-c) 100%,var(--sec-color-dark) 20%);
     & * {
         all: unset;
         padding: 0 !important;
@@ -434,25 +464,25 @@ div.col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) {
     }
 
     &::before {
-        content: "kontynuuj oglądanie";
+        content: "Kontynuuj oglądanie";
 		position: absolute;
         font-size: 1.6rem;
         font-weight: 500;
         border-radius: var(--i-round-eff);
-		border: solid var(--border-W) var(--i-sec-color);
+		border: solid var(--border-W) var(--sec-color-dark);
 		padding: 0 var(--i-round-eff);
         width: fit-content;
 		bottom: 100%;
 		transform: translateY(50%);
 		left: var(--i-round-eff);
-		background-color: var(--sec-color);
+		background-color: var(--sec-color-darker);
 		z-index: 1;
     }
-
+	/* list */
     &>div {
-        display: flex;
-		border: var(--border-W) var(--i-sec-color) solid;
-		background-color: #0004;
+        display: flex !important;
+		border: var(--border-W) var(--sec-color-dark) solid;
+		background-color: var(--sec-color-darker);
 		border-radius: var(--i-round-eff);
 		gap: var(--i-padding);
 		padding: var(--i-padding) !important;
@@ -475,7 +505,7 @@ div.col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) {
         &::scroll-button(left) {
             content: "\f054" ;
             border: none;
-            background-color: color-mix(in srgb,var(--bg-c) 100%,var(--i-sec-color) 20%) ;
+            background-color: var(--i-nonactive-color) ;
             font-family: FontAwesome ;
             font-size: 2rem ;
 			padding: .9rem .4rem .7rem .5rem;
@@ -487,8 +517,8 @@ div.col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) {
             position-area: right center ;
             transform: translate(calc(-50% - var(--border-W)/2)) ;
             z-index: 10 ;
-            border: var(--border-W) solid var(--i-sec-color) ;
-            transition: 0.3s ;
+            border: var(--border-W) solid var(--sec-color-dark) ;
+            transition: all 0.3s , box-shadow .2s ;
 			cursor: pointer;
         }
 		&::scroll-button(right):disabled,
@@ -499,7 +529,12 @@ div.col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) {
 		&::scroll-button(left):hover{
 			color: white;
 			border-color: var(--color);
-			background-color: color-mix(in srgb, var(--i-sec-color) 100%, var(--color) 100%);
+			background-color: var(--i-active-color);
+		}
+        &::scroll-button(right):active,
+		&::scroll-button(left):active{
+
+			box-shadow: 0 0 0 .2rem var(--color-dark);
 		}
         &::scroll-button(left) {
             content: "\f053";
@@ -509,50 +544,53 @@ div.col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) {
         }
 
         &>div {
-			display: flex;
-			width: var(--clamp-historia);
+			width: var(--clamp-historia) !important;
             &::scroll-marker {
                 content: "" ;
                 height: 0.7rem ;
                 aspect-ratio: 1/1 ;
                 border-radius: 50% ;
-                border: solid var(--border-W) var(--i-sec-color) ;
-				background-color: color-mix(in srgb, var(--bg-c) 100%, var(--i-sec-color) 20%);
-                transform: translate(0, -50%) ;
+                border: solid var(--border-W) var(--sec-color-dark) ;
+				background-color: var(--i-nonactive-color);
+                transform: translate(0, -50%);
             }
+			&::scroll-marker:hover{
+				border-color: var(--color-dark);
+				background-color: var(--color-darker);
+			}
 			&::scroll-marker:target-current{
 				border-color: var(--color);
-				background-color: color-mix(in srgb, var(--i-sec-color) 100%, var(--color) 100%) ;
+				background-color: var(--i-active-color) ;
 			}
 			/* some kind of wraper*/
             &>div {
-				display: flex;
 				background: unset !important;
 				filter: drop-shadow(0 0 .2rem var(--sec-color));
 				transition: .3s;
+				width: inherit;
 				&:hover{
 					cursor: pointer;
 					filter: drop-shadow(0 0 .3rem var(--color));
 					&>div>:last-child{
-						background-color: color-mix(in srgb, var(--i-sec-color) 100%, var(--color) 100%);
+						background-color: var(--color-dark);
 					}
 				}
 				/* sec-wraper */
 					/* how creative */
 				&>div {
-					display: flex;
-					flex-direction: column;
+					width: inherit;
 					position: relative;
+					
                     &>:first-child{
 						display: flex;
-						border-radius: var(--round-eff);
+						border-radius: var(--round-eff) !important;
 						overflow: hidden;
+						width: inherit;
+						aspect-ratio: var(--ratio);
 						&>a{						
-							display: flex;
-							aspect-ratio: var(--ratio);
+							width: inherit;
 							&>img{
-								height: 100%;
-								width: 100%;
+								width: inherit;
 							}
 						}
 					}
@@ -576,8 +614,8 @@ div.col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) {
 						align-content: center;
 						font-weight: 700;
 						padding-top: 2.5rem !important;
-						border-bottom-left-radius: var(--round-eff) ;
-						border-bottom-right-radius: var(--round-eff)  ;
+						border-bottom-left-radius: var(--round-eff);
+						border-bottom-right-radius: var(--round-eff);
 					}
 					/* button */
                     &>:last-child {
@@ -598,40 +636,31 @@ div.col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) {
 /* home / main bottom left box */
 div.col-12.col-xl-9:has(.col-12.m-0.p-0.mb-2 > h3.m-0) {
     all: unset;
-    display: flex;
+	display: flex;
     flex-direction: column;
-    flex: 3;
-    margin-right: 4rem;
+	/* border: 1px solid red; */
+	box-sizing: border-box;
+	flex: 3;
 
-    /* polecane i historia */
+    /* polecane */
     &>div.col-12.m-0.p-0.mb-2:has(h3.m-0) {
         all: unset;
-        display: flex !important;
-        flex-direction: column !important;
-        margin-top: 1rem !important;
-        position: relative;
-
-        &:after {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            pointer-events: none;
-            content: "";
-            z-index: 10;
-            aspect-ratio: 1/1;
-            height: 0.5rem;
-            border: 1px solid var(--color);
-            background-color: var(--bg-c);
-        }
-
+		position: relative;
+		
         &:before {
-            content: "polecane";
-            font-size: 1.8rem;
-            font-weight: 500;
-            padding: 0 2rem;
-            background: rgba(var(--raw-color), 0.5);
-            border-radius: var(--round-eff) var(--round-eff) 0 0;
-            width: fit-content;
+            content: "Polecane dla Ciebie";
+			position: absolute;
+			font-size: 1.6rem;
+			font-weight: 500;
+			border-radius: var(--i-round-eff);
+			border: solid var(--border-W) var(--sec-color-dark);
+			padding: 0 var(--i-round-eff);
+			width: fit-content;
+			bottom: 100%;
+			transform: translateY(50%);
+			left: var(--i-round-eff);
+			background-color: var(--sec-color-darker);
+			z-index: 1;
         }
 
         & * {
@@ -643,85 +672,72 @@ div.col-12.col-xl-9:has(.col-12.m-0.p-0.mb-2 > h3.m-0) {
         & h3.m-0 {
             display: none !important;
         }
-
+		/* list */
         &>div {
-            background-color: var(--trans-Bc);
-            padding: 1rem !important;
-            border: 1px solid var(--color);
-            border-radius: var(--round-eff);
-            border-top-left-radius: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(126px, 1fr));
-            column-gap: 0.8rem;
-            row-gap: 0.8rem;
-            height: 13rem;
-            min-height: 13rem;
-            max-height: fit-content;
-            overflow: auto !important;
-            resize: vertical;
-
+			display: grid;
+			grid-template-columns: repeat(var(--grid-main-21), 1fr);
+			overflow: unset !important;
+			gap: var(--i-padding);
+			padding: var(--i-padding) !important;
+			padding-top:calc(var(--i-padding) + var(--i-round-eff)) !important;
+			border-radius: var(--i-round-eff);
+			border: var(--border-W) solid var(--sec-color-dark);
+			background-color: var(--sec-color-darker);
+			/* box */
             &>div {
-                box-shadow: var(--color) var(--shadow-efect);
-                border-radius: var(--round-eff);
-                transition: 0.3s;
-                display: flex !important;
-                aspect-ratio: var(--ratio) !important;
-                width: var(--clamp-polecane) !important;
+				width: 100%;
+				aspect-ratio: var(--ratio);
+				border-radius: var(--round-eff);
+				overflow: hidden;
+				box-shadow: 0 0 .2rem .1rem var(--sec-color);
+				transition: .3s;
+				&:hover{
+					box-shadow: 0 0 .3rem .1rem var(--color);
+				}
+                &>div{
+					width: inherit;
+					height: inherit;
+					&>div{
+						width: inherit;
+						height: inherit;
+						position: relative;
+						&>div.col-12{
+							width: inherit;
+							height: inherit;
+							&>a {
+								width: inherit;
+									height: inherit;
+								&>img {
+									width: inherit;
+									height: inherit;
+								}
+							}
+						}
 
-                &:has(img:hover) {
-                    --shadow-efect: var(--shadow-efect-hover);
-                }
-
-                & div {
-                    display: flex;
-                    flex-direction: column;
-                    border-radius: var(--round-eff);
-                }
-
-                & a {
-                    display: flex;
-                    border-radius: var(--round-eff);
-                    overflow: hidden;
-                }
-
-                & img {
-                    aspect-ratio: var(--ratio) !important;
-                    width: var(--clamp-polecane) !important;
-                }
-
-                &>div {
-                    position: relative;
-                }
-
-                & div.text-center.ml-1.mr-1.text-trim.text-bold {
-                    display: inline;
-                    overflow: hidden;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
-                    position: absolute;
-                    bottom: -0.1rem;
-                    z-index: 1;
-                    min-height: 2rem;
-                    height: 2rem;
-                    width: 100%;
-                    border-radius: 0 0 var(--round-eff) var(--round-eff);
-                    transition: ease-out 0.4s;
-                    background-color: #0008;
-                    backdrop-filter: blur(var(--blur-Bc));
-                    padding: 0 0.4rem !important;
-                    box-sizing: border-box;
-                    font-weight: 500;
-
-                    &:hover {
-                        transition-delay: 0.3s;
-                        height: 100%;
-                        max-height: 100%;
-                        white-space: normal;
-                        border-radius: var(--round-eff);
-                        text-overflow: clip;
-                        text-align: center;
-                    }
-                }
+						/* title */
+						& div.text-bold {
+							position: absolute;
+							pointer-events: none;
+							overflow: hidden;
+							text-overflow: ellipsis;
+							display: -webkit-box;
+							-webkit-line-clamp:2;
+							-webkit-box-orient:vertical;
+							bottom: 0;
+							left: 0;
+							right: 0;
+							-webkit-text-stroke: .02rem #111;
+							background: linear-gradient( transparent,#111a, #111 );
+							color: white;
+							padding: .2rem .4rem !important;
+							height: 3rem;
+							align-content: center;
+							font-weight: 700;
+							padding-top: 2.5rem !important;
+							z-index: 1;
+						}
+					}
+				}
             }
         }
     }
@@ -732,33 +748,33 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
     all: unset;
     padding: 0 !important;
     display: flex;
-    flex: 1;
     flex-direction: column;
-    margin-top: 3.5rem;
     position: relative;
-    border: 1px solid #222;
-    background-color: #0002;
-    border-radius: var(--round-eff);
-    height: fit-content;
+	box-sizing: border-box;
+	border: var(--border-W) solid var(--sec-color-dark);
+	background-color: var(--sec-color-darker);
+	border-radius: var(--i-round-eff);
+	flex: 1;
+	height: fit-content;
 
     &:before {
         content: "Najlepsze anime";
+		--i-calc-round-eff:calc(var(--i-round-eff) - var(--border-W));
         font-weight: 500;
         font-size: 1.3rem;
         background-color: #333;
         padding: 0.5rem 0.8rem;
-        border-radius: var(--round-eff) var(--round-eff) 0 0;
+        border-radius: var(--i-calc-round-eff) var(--i-calc-round-eff) 0 0;
     }
 
     &:after {
         content: "miesiąc";
         position: absolute;
-        top: 0;
-        right: 0.8rem;
-        transform: translateY(50%);
+        top: calc(var(--i-round-eff)/2);
+		right: calc(var(--i-round-eff)/2);
+		border-radius: calc(var(--i-round-eff)/2);
         background-color: var(--color);
-        border-radius: calc(var(--round-eff) * 3 / 5);
-        padding: 0 0.8rem;
+        padding: 0 .8rem;
         color: #222;
         font-weight: 500;
     }
@@ -922,20 +938,20 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
     &> :last-child {
         position: absolute;
         top: 100%;
-        right: var(--round-eff);
+        right: var(--i-round-eff);
         transform: translateY(-50%);
         background-color: var(--color);
-        padding: 0 0.8rem !important;
+        padding: 0 .8rem !important;
         color: #222;
         font-weight: 500;
         border-radius: inherit;
-        border: transparent 1px solid;
+        border: transparent var(--border-W) solid;
         transition: 0.3s;
 
         &:hover {
             cursor: pointer;
             border-color: var(--color);
-            background-color: var(--bg-c);
+            background-color: var(--color-darker);
             color: var(--color);
         }
     }
@@ -1016,13 +1032,16 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
 					border-radius: var(--round-eff);
 					align-content: center;
 					text-align: center;
+					transition: .2s ease-in-out;
 					&>i{
 						font: inherit ;
 						font-size: inherit ;
 					}
 					&:hover{
-						filter:brightness(var(--brightness-eff));
 						cursor: pointer;
+					}
+					&:active{
+						box-shadow: 0 0 0 var(--border-W-active) var(--color-dark);
 					}
 				}
 				&>div.row>div{
@@ -1164,9 +1183,11 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
 							
 							position: relative !important;
 							&>#newPlayer {
-
+								&>div.vjs-loading-spinner{
+									transform: translateX(-50%) translatey(-50%) !important;
+								}
 								&>button.vjs-big-play-button[title="Odtwórz wideo"] {
-									background-color: rgba(var(--raw-color), 0.25);
+									background-color: var(--color-darker);
 									font-size: 2.5rem;
 									transition: 0.3s;
 									border: 1px solid var(--color);
@@ -1180,7 +1201,6 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
 									&:hover {
 										cursor: pointer;
 										filter: brightness(var(--brightness-eff));
-										background-color: rgba(var(--raw-color), 0.5);
 										color: white;
 									}
 
@@ -1196,31 +1216,79 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
 								}
 								/* video controls */
 								&>div.vjs-control-bar[dir="ltr"] {
-									--gradient-point: rgba(var(--raw-bg-c), 0.5);
+									--gradient-point: var(--t-50-bg-c);
 									--optionsHeight: 2.5rem;
+									--i-bottom-padding: .5rem;
 									background: linear-gradient(var(--gradient-point), var(--bg-c));
 									transition: 0.3s;
 									box-sizing: border-box;
 									padding: 0 1rem !important;
 									height: unset;
-									padding-bottom: 0.5rem !important;
+									padding-bottom: var(--i-bottom-padding) !important;
 									gap: 0.5rem;
 
-									&>* {
-										background-color: var(--bg-c);
+									&>*:not(.vjs-progress-control){
+										backdrop-filter: blur(5px);
 										border-radius: 45rem;
-										min-width: var(--optionsHeight);
-										min-height: 2rem;
+										background-color: #2228;
+										border: solid var(--border-W) #222;
+										height: var(--optionsHeight);
+										min-width: 3.5rem;
+										align-content: center;
+										font-size: .7rem;
 									}
 
 									&> :nth-last-child(4) {
 										margin-left: auto !important;
 									}
+									&>div.vjs-volume-panel.vjs-control.vjs-volume-panel-horizontal{
+										transition: .5s ease-in-out;
+										&:hover, &:focus, &:active{
+											width: fit-content;
+											&>div{
+												width: 5rem;
+												opacity: 1;
+											}
+										}
+										&>button{
+											height: unset;
+											width: 3.5rem;
+											&>span{
+												align-content: center;
+												&:before{
+													position: unset;
+													
+												}
+											}
+											
+										}
+										&>div{
+											transition: inherit;
+											height: unset;
+											opacity: 0;
+											&>div.vjs-volume-bar.vjs-slider-bar.vjs-slider.vjs-slider-horizontal{
+												margin: auto 0 !important;
+											}
 
+										}
+									}
+									&>.vjs-play-control.vjs-control.vjs-button{
+										&>:before{
+											all: unset;
+											font-family: VideoJS;
+											content: "\f103";
+											font-size: 1.5rem;
+										}
+										&.vjs-paused{
+											&>:before{
+												content: "\f101" ;
+											}
+										}
+									}
 									&>div.vjs-progress-control.vjs-control {
 										position: absolute;
 										background: linear-gradient(transparent, var(--gradient-point));
-										bottom: var(--optionsHeight);
+										bottom: calc(var(--optionsHeight) + var(--i-bottom-padding));
 										left: 0;
 										border-radius: 0;
 										width: 100%;
@@ -1230,7 +1298,7 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
 										}
 
 										&>div {
-											--barHeight: 0.4rem;
+											--barHeight: .4rem;
 											height: var(--barHeight);
 											margin: 0 1rem !important;
 											padding: 0 !important;
@@ -1259,9 +1327,9 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
 													font-family: sans-serif;
 													position: absolute;
 													bottom: 1rem;
-													background-color: rgba(var(--raw-bg-c), 0.5);
+													background-color: #2228;
 													padding: 0.3rem 0.5rem !important;
-													border: 1px solid var(--bg-c);
+													border: 1px solid #222;
 													font-size: 0.7rem;
 												}
 											}
@@ -1273,7 +1341,20 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
 											}
 										}
 									}
-
+									&>.vjs-vjsdownload.vjs-control.vjs-button{
+										&:before{
+											all: unset !important;
+										}
+										&:after{
+											all: unset;
+											font-family: FontAwesome;
+											content:"\f019";
+											font-size: 1rem;
+										}
+										& *{
+											display: none !important;
+										}
+									}
 									&>div.vjs-menu-button.vjs-menu-button-popup.vjs-control.vjs-button {
 										align-content: center;
 										width: unset;
@@ -1285,16 +1366,28 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
 										&>button {
 											font-size: 0.7rem;
 											width: unset;
+											
 										}
 
 										&>div {
+											height: unset;
+											bottom: 2.5rem;
+											border: solid 1px var(--sec-color);
+											border-radius: var(--round-eff);
+											z-index: 1;
+											&:after{
+												content:'';
+												position: absolute;
+												top: 100%;
+												left: 0;
+												height: .7rem;
+												width: 100%;
+											}
 											&>ul.vjs-menu-content {
-												border: 1px solid var(--bg-c);
-												background-color: rgba(var(--raw-bg-c), 0.5);
+												position: unset !important;
+												background-color: var(--t-50-bg-c);
+												backdrop-filter: blur(5px);
 												border-radius: var(--round-eff);
-												backdrop-filter: blur(var(--blur-Bc));
-												margin-bottom: .8rem !important;
-												z-index: 1;
 
 												&>li:hover {
 													background-color: #fff8;
@@ -1311,6 +1404,7 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
 									}
 								}
 							}
+							/* skip intro */
 							& a{
 								all: unset ;
 								position: absolute ;
@@ -1396,7 +1490,7 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
 						& button#next_ep_button{
 							border-color: var(--color);
 							color: var(--color);
-							background-color: rgba(var(--raw-color), 0.25);
+							background-color: var(--color-darker);
 							flex: 1;
 						}
 					}
@@ -1404,6 +1498,7 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
 			}
 		}
 	}
+	/* similar anime / characters */
 	&>.col-12.col-lg-3.m-0.px-xl-3:has(#similar_animes) {
 		all: unset;
 		margin: 0 !important;
@@ -1411,7 +1506,6 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
 		display: flex;
 		flex-direction: column;
 		flex: var(--similar-anime-flex);
-		/* similar anime / characters */
 		&>.row:has(#showAnimeButton){
 			display: flex;
 			&>div{
@@ -1427,7 +1521,7 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
 					color: #666;
 					font-weight: bold;
 					&.btn-primary{
-						background-color: rgba(var(--raw-color), 0.25);
+						background-color: var(--color-darker);
 						border-color: var(--color);
 						color: var(--color);
 						box-shadow: 0 0 0.5rem var(--color);
