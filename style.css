@@ -1,8 +1,5 @@
 :root {
 	--brightness-eff: 1.2;
-	--round-eff: .5rem;
-	/* .5rem */
-	/*the best range is from 0 to 1*/
 	--border-W: 2px;
 	--border-W-active: .2rem;
 	--ratio: 5/7;
@@ -25,7 +22,6 @@
 	--ep-border-color-watched: #22aa55;
 	--ep-list-number-bg: #111;
 	--filer-color: #882222;
-
 }
 
 /* beta */
@@ -36,6 +32,13 @@
 	--ep-border: var(--ep-border-style) var(--ep-border-W) var(--ep-border-color);
 	--ep-border-watched: var(--ep-border-style) var(--ep-border-W) var(--ep-border-color-watched);
 	--grid-main-21: 7;
+}
+
+@property --round-eff {
+	syntax: "*";
+	inherits: true;
+	initial-value: .5rem;
+	/*the best range is from 0 to 1*/
 }
 
 @property --color {
@@ -125,6 +128,7 @@ body {
 /* header */
 div[style="padding-top: 80px;"] {
 	padding: 3.5rem !important;
+	
 }
 
 nav:has(#navBarSearchForm)>button.navbar-toggler.m-0[type="button"] {
@@ -135,11 +139,12 @@ nav:has(#navBarSearchForm) {
 	all: unset;
 	display: flex;
 	margin: 0 !important;
-	padding: 0 !important;
+	padding: 0 .5rem !important;
 	position: fixed;
 	z-index: 1001;
 	left: 0;
 	top: 0;
+	height: 3rem;
 	right: 0;
 	background-color: var(--sec-color-dark) !important;
 	--blur-in: 0.6rem;
@@ -252,6 +257,7 @@ nav:has(#navBarSearchForm) {
 					&:first-child {
 						position: relative !important;
 						background-color: transparent;
+						margin: auto 0 !important;
 
 						&:hover {
 							filter: grayscale(70%);
@@ -393,19 +399,49 @@ nav:has(#navBarSearchForm) {
 	/* 	input  */
 	&>#navBarSearchForm {
 		display: flex;
-		padding: 0.2rem 0 !important;
+		height: 2rem;
+		margin: auto 0 !important;
 		position: relative;
-
+		border: 1px solid var(--sec-color-light);
+		border-radius: var(--round-eff);
+		transition: all .5s;
 		&>input {
-			border-radius: var(--round-eff);
-			border: 1px solid var(--sec-color-light);
+			transition: all .5s;
 			padding: 0.2rem 0.5rem !important;
 			color: var(--sec-color-light);
-
+			z-index: 1;
 			&:focus {
-				border-color: var(--color);
 				color: var(--color);
 			}
+			&::placeholder{
+				opacity: 0;
+			}
+			
+		}
+		&:has(>input:focus),&:has(input:not(:placeholder-shown)){
+			&::before{
+				top: 0;
+				left: 4%;
+				padding: 0 .1rem;
+				font-size: .7rem;
+			}
+		}
+		&:has(>input:focus){
+			border-color: var(--color);
+			&::before{
+				color: var(--color);
+			}
+		}
+		&::before{
+			content: 'Wyszukaj anime';
+			position: absolute;
+			top: 50%;
+			left: .5rem;
+			transform: translateY(-50%);
+			transition: all .5s;
+			color: var(--sec-color-light);
+			pointer-events: none;
+			background-color: var(--sec-color-dark);
 		}
 
 		&>#searchInputautocomplete-list {
@@ -441,6 +477,9 @@ nav:has(#navBarSearchForm) {
 					filter: brightness(var(--brightness-eff));
 				}
 			}
+		}
+		&>#searchInputautocomplete-list:empty{
+			display: none;
 		}
 	}
 
@@ -488,7 +527,7 @@ div.col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) {
 		display: none;
 	}
 
-	&::before {
+	&:before{
 		content: "Kontynuuj oglądanie";
 		position: absolute;
 		font-size: 1.6rem;
@@ -532,7 +571,6 @@ div.col-12.m-0.p-0.mb-2:has(h3.mb-0.ml-3) {
 		&::scroll-button(right),
 		&::scroll-button(left) {
 			content: "\f054";
-			border: none;
 			background-color: var(--i-nonactive-color);
 			font-family: var(--font-A);
 			font-size: 2rem;
@@ -887,12 +925,7 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
 							width: var(--clamp-polecane);
 							overflow: hidden;
 							border-radius: var(--round-eff);
-							box-shadow: var(--shadow-efect) #111;
 							transition: 0.3s;
-
-							&:hover {
-								box-shadow: var(--shadow-efect-hover) var(--color);
-							}
 
 							& img {
 								display: flex;
@@ -1080,7 +1113,6 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
 					display: flex;
 					border: 1px solid transparent;
 					background-color: transparent !important;
-					box-sizing: border-box;
 					width: calc(var(--input-W) - var(--video-padding));
 					height: 2rem;
 					padding: .2rem .5rem !important;
