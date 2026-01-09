@@ -33,7 +33,7 @@
 	--ep-border-watched: var(--ep-border-style) var(--ep-border-W) var(--ep-border-color-watched);
 	--grid-main-21: 7;
 }
-
+/*Hania kaczorek: こんにちは、私は愛しいハニアです。*/
 @property --round-eff {
 	syntax: "*";
 	inherits: true;
