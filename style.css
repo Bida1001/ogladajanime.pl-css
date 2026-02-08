@@ -1178,6 +1178,9 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
 					&::-webkit-scrollbar {
 						display: none;
 					}
+					& *{
+						background: none !important;
+					}
 
 					/* ep-box */
 					& li {
@@ -1196,10 +1199,7 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
 							box-shadow: 
 								0 0 0 .1rem var(--i-active-color), 
 								0 0 .2rem calc(var(--ep-border-W) + .16rem) var(--ep-border-color);
-							&>div>div{
-								&>span{
-									--ep-border-color:var(--i-active-color);
-								}
+							&>div>div.float-left{
 								&>p{
 									height: auto;
 							}	}
@@ -1219,16 +1219,17 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
 							overflow: hidden;
 							flex: 1;
 							position: relative;
+							flex-direction: column;
 
-							&>div {
+							&>div.float-left{
 								display: flex;
 								flex-direction: column;
 								flex-grow: 1;
-								background-color: var(--sec-color-dark);
+								background-color: var(--sec-color-dark) !important;
 
 								/* numer */
 								&>span {
-									background-color: var(--ep-list-number-bg);
+									background-color: var(--ep-list-number-bg) !important;
 									display: flex;
 									font-size: 1.1rem;
 									justify-content: center;
@@ -1249,6 +1250,10 @@ div.col-12.col-xl-3.pr-2:has(h3.float-left) {
 									text-overflow: ellipsis;
 									overflow: hidden;
 								}
+							}
+							&>span.float-right{
+								border-top: solid var(--ep-border-W) var(--ep-border-color);
+								text-align: center;
 							}
 						}
 					}
